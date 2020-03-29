@@ -1,0 +1,32 @@
+<form class="example-form">
+<h1 align="center">Login In</h1>
+<div align="center" class="example-container">
+  <table class="example-full-width" cellspacing="100" align="center">
+
+    <tr><td>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email"  name ="userName" required [(ngModel)]= "login.userName">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field></td>
+    </tr>
+    <tr><td>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]= "login.password" name="password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+    </td>
+    </tr>
+    <tr>
+
+      <td>
+        <button type="submit"  (click)="onSubmit()" class="btn btn-success">Submit</button>
+      </td>
+    </tr>
+  </table>
+</div>
+</form>
