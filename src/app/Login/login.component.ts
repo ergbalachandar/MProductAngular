@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {DataService} from "../Service/data-service";
-import {Router} from "@angular/router";
-import {Login} from "./login";
+import {DataService} from '../Service/data-service';
+import {Router} from '@angular/router';
+import {Login} from './login';
 
 
 /** @title Form field with error messages */
@@ -14,17 +14,11 @@ import {Login} from "./login";
 export class LoginComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
-  login : Login = new Login();
+  login: Login = new Login();
   submitted = false;
 
-  ngOnInit() {
-  }
 
-  newLogin(): void {
-    this.submitted = false;
-    this.login = new Login();
-  }
-  constructor(private dataService : DataService,private router: Router) {
+  constructor(private dataService: DataService, private router: Router) {
 
 
   }

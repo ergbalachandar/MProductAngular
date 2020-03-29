@@ -1,17 +1,17 @@
-import {EmployeeDetails} from "./employeeDetails";
+import {EmployeeDetails} from './employeeDetails';
 
 
 export class Company{
 
 
   emailId: string;
-  companyName:string;
-  addressLineOne:string;
-  addressLineTwo:string;
-  city:string;
-  state:string;
-  country:string;
-  active:number;
+  companyName: string;
+  addressLineOne: string;
+  addressLineTwo: string;
+  city: string;
+  state: string;
+  country: string;
+  active: number;
   employeeDetails = new EmployeeDetails();
 
 

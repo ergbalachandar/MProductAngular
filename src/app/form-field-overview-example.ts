@@ -1,36 +1,41 @@
 import {Component, OnInit} from '@angular/core';
-import { DataService} from "./Service/data-service";
-import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
+import { DataService} from './Service/data-service';
+import {findAll} from '@angular/compiler-cli/ngcc/src/utils';
 
 
-import{Employee} from "./employee";
+import {Employee} from './employee';
 
 /** @title Simple form field */
 @Component({
-  selector: 'form-field-overview-example',
+
+  selector: 'app-form-field-overview-example',
   templateUrl: 'form-field-overview-example.html',
   styleUrls: ['form-field-overview-example.css'],
 })
-export class FormFieldOverviewExample  {
+export class FormFieldOverviewExampleComponent  {
 
-  mArticles:Array<String>;
-  mSources:Array<String>;
+
+  mArticles: Array<string>;
+  // tslint:disable-next-line:ban-types
+  mSources: Array<string>;
   name: Employee;
-  name1 : String;
+  // tslint:disable-next-line:ban-types
+  name1: string;
 
-  public employee:Array<Employee>;
+  public employee: Array<Employee>;
 
-  public employees : Employee;
+  public employees: Employee;
 
-  constructor(private dataService:DataService){
+  constructor(private dataService: DataService){
     console.log('app component constructor called');
 
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
-    //load articles
+    // load articles
    // this.dataService.initArticles().subscribe(data => this.mArticles = data['articles']);
-    //load news sources
+    // load news sources
 
     /*this.dataService.initSources().then(
       employees => {
@@ -41,7 +46,7 @@ export class FormFieldOverviewExample  {
       }
     ); */
     this.dataService.initSources().then(
-      name => {this.name = name;},
+      name => {this.name = name; },
       err => {
         console.log(err);
       }
@@ -62,13 +67,10 @@ export class FormFieldOverviewExample  {
 
 
 
-    //subscribe(data=> this.mSources = data['sources']);
+    // subscribe(data=> this.mSources = data['sources']);
 
   }
 
 }
 
 
-/**  Copyright 2019 Google LLC. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license */

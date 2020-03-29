@@ -2,15 +2,15 @@ export class EmployeeDetails{
 
  firstName: string;
 
-lastName : string;
+lastName: string;
 
-  emailId : string;
+  emailId: string;
 
-  sex : string;
+  sex: string;
 
-  addressLine1 : string;
+  addressLine1: string;
 
-  addressLine2 : string;
+  addressLine2: string;
 
   city: string;
 

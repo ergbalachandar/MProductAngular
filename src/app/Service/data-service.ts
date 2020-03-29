@@ -2,9 +2,9 @@ import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Configuration} from "jasmine-spec-reporter/built/configuration";
-import {findAll} from "@angular/compiler-cli/ngcc/src/utils";
-import {Employee} from "../employee";
+import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+import {findAll} from '@angular/compiler-cli/ngcc/src/utils';
+import {Employee} from '../employee';
 
 
 
@@ -23,20 +23,22 @@ export class DataService {
 
 
 
-  initSources() : Promise <Employee> {
+  initSources(): Promise <Employee> {
 
     return this.http.get(this.actionUrl).toPromise()
       .then(response => response as Employee);
   }
 
 
-  companySignup(company: Object): Observable<Object> {
+  // tslint:disable-next-line:ban-types
+  companySignUp(company: Object): Observable<Object> {
     return this.http.post(`http://localhost:8080/EProduct/companysignup`, company);
   }
 
+  // tslint:disable-next-line:ban-types
   loginUser(login: Object): Observable<Object>{
 
-    return this.http.post('http://localhost:8080/EProduct/loginUser',login);
+    return this.http.post('http://localhost:8080/EProduct/loginUser', login);
 
   }
 

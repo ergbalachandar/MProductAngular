@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {Company} from "./company";
+import {Component, OnInit} from '@angular/core';
+import {Company} from './company';
 
-import {DataService} from "../Service/data-service";
-import {Data, Router} from "@angular/router";
+import {DataService} from '../Service/data-service';
+import {Data, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-company',
@@ -17,7 +17,7 @@ company: Company = new Company();
   submitted = false;
   ngOnInit() {
   }
-  constructor(private dataService : DataService,private router: Router) {
+  constructor(private dataService: DataService, private router: Router) {
 
 
   }
@@ -30,11 +30,11 @@ company: Company = new Company();
 
      console.log(this.company);
 
- if(this.company.employeeDetails.lastName !=null ) {
-    this.dataService.companySignup(this.company)
+     if (this.company.employeeDetails.lastName != null ) {
+    this.dataService.companySignUp(this.company)
       .subscribe(data => console.log(data), error => console.log(error)); }
-    this.company = new Company();
-    this.gotoList();
+     this.company = new Company();
+     this.gotoList();
   }
 
 
