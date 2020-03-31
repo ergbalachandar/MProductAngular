@@ -12,6 +12,7 @@ import {DemoMaterialModule } from './material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from '../Login/login.component';
 import {MatNativeDateModule} from '@angular/material/core';
+import {EmployeeListComponent} from '../EmployeeDetails/employee-list.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     AppComponent,
     CompanySignupComponent,
     FormFieldOverviewExampleComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeeListComponent
 
   ],
   imports: [

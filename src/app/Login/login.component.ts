@@ -3,6 +3,11 @@ import {FormControl, Validators} from '@angular/forms';
 import {DataService} from '../Service/data-service';
 import {Router} from '@angular/router';
 import {Login} from './login';
+import {LoginResponse} from './loginResponse';
+import {Observable} from 'rxjs';
+import {EmployeeListComponent} from '../EmployeeDetails/employee-list.component';
+import {EmployeeDetailsResponseDto} from '../EmployeeDetails/employeeDetailsResponseDto';
+import {RetrieveEmployeeListRequest} from '../EmployeeDetails/retrieveEmployeeListRequest';
 
 
 /** @title Form field with error messages */
@@ -16,28 +21,29 @@ export class LoginComponent {
   hide = true;
   login: Login = new Login();
   submitted = false;
+  loginResponse: LoginResponse = new LoginResponse();
 
-
-  constructor(private dataService: DataService, private router: Router) {
-
-
+  constructor(private dataService: DataService, private router: Router, private employeeListComponent: EmployeeListComponent) {
   }
 
   loginUser(){
-    this.dataService.loginUser(this.login)
-        .subscribe(data => console.log(data), error => console.log(error));
-
-    this.login = new Login();
-    this.gotoList();
-}
-
+      console.log(this.login);
+      this.dataService.loginUser(this.login).then(
+          (result) => {this.loginResponse = result; console.log(this.loginResponse); this.gotoList(this.loginResponse); },
+          err => {
+              console.log(err);
+          }
+      );
+  }
   onSubmit() {
     this.submitted = true;
     this.loginUser();
   }
 
-  gotoList() {
-    this.router.navigate(['/employeeList']);
+  gotoList(loginResponse: LoginResponse) {
+      console.log(JSON.stringify(loginResponse));
+
+      this.router.navigate(['/employeeList', JSON.stringify(this.loginResponse)]);
   }
 
   getErrorMessage() {
@@ -47,8 +53,4 @@ export class LoginComponent {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-
-
-
-
 }
