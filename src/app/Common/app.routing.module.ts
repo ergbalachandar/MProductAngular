@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'company', pathMatch: 'full' },
   { path: 'companySignUp', component: CompanySignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'employeeList/:loginResponse', component: EmployeeListComponent },
+  { path: 'employeeList', component: EmployeeListComponent },
 
 ];
 
