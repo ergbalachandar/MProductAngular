@@ -24,6 +24,15 @@ export class DataService {
       .then(response => response as Employee);
   }
 
+  isUserLoggedIn() {
+    const user = sessionStorage.getItem('userName');
+    console.log(!(user === null));
+    return !(user === null);
+  }
+
+  logOut() {
+    sessionStorage.removeItem('userName');
+  }
 
   // tslint:disable-next-line:ban-types
   companySignUp(company: Object): Observable<Object> {
@@ -35,11 +44,9 @@ export class DataService {
   loginUser(login: Object): Promise<LoginResponse>{
     return this.http.post('http://localhost:8080/EProduct/loginUser', login).toPromise()
         .then(response => response as LoginResponse);
-
   }
 
   employeeList(retrieveEmployeeListRequest: RetrieveEmployeeListRequest): Promise<EmployeeDataResponseDto>{
-
       return this.http.post(`http://localhost:8080/EProduct/retrieveEmployeeList`, retrieveEmployeeListRequest).toPromise()
           .then(response => response as EmployeeDataResponseDto);
     }

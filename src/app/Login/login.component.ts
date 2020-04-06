@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../Service/data-service';
 import {Router} from '@angular/router';
 import {Login} from './login';
@@ -18,12 +18,14 @@ import {StorageService} from '../Service/storage-service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent  {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
   login: Login = new Login();
   submitted = false;
   loginResponse: LoginResponse = new LoginResponse();
+
+
 
   constructor(private dataService: DataService, private router: Router, private storageService: StorageService) {
   }
@@ -32,6 +34,7 @@ export class LoginComponent {
       console.log(this.login);
       this.dataService.loginUser(this.login).then(
           (result) => {this.loginResponse = result; console.log(this.loginResponse);
+                       sessionStorage.setItem('userName', this.loginResponse.userName);
                        this.gotoList(this.loginResponse);
           },
           err => {
@@ -39,6 +42,8 @@ export class LoginComponent {
           }
       );
   }
+
+
 
   onSubmit() {
     this.submitted = true;
@@ -57,4 +62,6 @@ export class LoginComponent {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+
 }
