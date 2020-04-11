@@ -34,23 +34,20 @@ export class LoginComponent  {
       console.log(this.login);
       this.dataService.loginUser(this.login).then(
           (result) => {this.loginResponse = result; console.log(this.loginResponse);
-                       sessionStorage.setItem('userName', this.loginResponse.userName);
-                       this.gotoList(this.loginResponse);
+                       this.gotoList(this.loginResponse, this.login.password);
           },
           err => {
               console.log(err);
           }
       );
   }
-
-
-
   onSubmit() {
     this.submitted = true;
     this.loginUser();
   }
 
-  gotoList(loginResponse: LoginResponse) {
+  gotoList(loginResponse: LoginResponse, password: string) {
+      loginResponse.password = password;
       this.storageService.setLoginResponse(loginResponse);
       this.router.navigate(['/employeeList']);
   }

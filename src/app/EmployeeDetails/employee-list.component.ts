@@ -44,7 +44,7 @@ export class EmployeeListComponent implements  OnInit {
     reloadData(loginResponse: LoginResponse) {
         this.retrieveEmployeeListRequest.userName = loginResponse.userName;
         this.retrieveEmployeeListRequest.companyId = loginResponse.companyId;
-        this.retrieveEmployeeListRequest.password = 'Shyamgops@1';
+        this.retrieveEmployeeListRequest.password = loginResponse.password;
 
         this.dataService.employeeList(this.retrieveEmployeeListRequest).then(
             (result) => {this.employees = result.employeeDetailsResponseDto;},

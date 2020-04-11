@@ -4,5 +4,6 @@ export class LoginResponse {
     companyName: string;
     role: string;
     userName: string;
+    password: string;
 
 }
